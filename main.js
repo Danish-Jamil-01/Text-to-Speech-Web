@@ -12,14 +12,23 @@ const error = document.querySelector('.error-para');
 
 const speechSynth = window.speechSynthesis;
 
-// Populate voices
-function populateVoices() {
-    const voices = speechSynth.getVoices();
+// Ensure voices are loaded properly on mobile
+let voices = [];
+function loadVoices() {
+    voices = speechSynth.getVoices();
+    if (voices.length > 0) {
+        populateVoiceOptions();
+    } else {
+        setTimeout(loadVoices, 100); // Retry if voices are not yet available
+    }
+}
+
+function populateVoiceOptions() {
     voiceSelect.innerHTML = voices.map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`).join('');
 }
 
-speechSynth.onvoiceschanged = populateVoices;
-populateVoices();
+speechSynth.onvoiceschanged = loadVoices;
+loadVoices();
 
 convertBtn.addEventListener('click', function () {
     const enteredText = text.value;
@@ -32,7 +41,12 @@ convertBtn.addEventListener('click', function () {
     error.textContent = "";
     const utterance = new SpeechSynthesisUtterance(enteredText);
 
-    utterance.voice = speechSynth.getVoices().find(voice => voice.name === voiceSelect.value);
+    const selectedVoiceName = voiceSelect.value;
+    const selectedVoice = voices.find(voice => voice.name === selectedVoiceName);
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
+    }
+
     utterance.volume = parseFloat(volumeSlider.value);
     utterance.rate = parseFloat(rateSlider.value);
     utterance.pitch = parseFloat(pitchSlider.value);
