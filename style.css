@@ -1,0 +1,120 @@
+/*style.css*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.default {
+    background-image: linear-gradient(90deg, #161578, #b81055);
+    color: #ffffff;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: inherit;
+}
+
+.headings-container {
+    padding: 0 1rem;
+}
+
+.interaction-container {
+    display: flex;
+    align-items: normal;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.text-control {
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color: rgba(63, 70, 74, 0.32);
+    color: inherit;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.text-control:focus-visible {
+    outline: none;
+}
+
+.error-para {
+    color: red;
+}
+
+.btn {
+    padding: 0.8rem;
+    background-image: linear-gradient(90deg, #F4244C, #F57D4E);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin: 0.5rem 0;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.slider {
+    margin: 0.5rem 0;
+}
+
+.select-voice {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid currentColor;
+    background-color: inherit;
+    color: inherit;
+}
+
+.theme-toggle {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #444;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: #222;
+}
